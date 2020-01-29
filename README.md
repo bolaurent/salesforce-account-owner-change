@@ -6,14 +6,17 @@ This is a solution to the problem described in Salesforce Idea [Changing Account
 1. Create a new VisualForce page, and paste the following code into it. Name the page AccountChangeOwner. Check the "Available for Lightning Experience, Lightning Communities, and the mobile app" box. Save it. Edit the security settings; enabling it for all users.
 
 ```
-<apex:page standardController="Account">
-    
+<apex:page standardController="Account" lightningStylesheets="true">
+    <apex:sectionHeader title="Change Account Owner"
+            subtitle="{!Account.Name}"
+            />
+
     <apex:outputPanel id="messages">
         <apex:pageMessages />
      </apex:outputPanel>
      
      <apex:form>
-     <apex:pageBlock title="Change owner for account {!Account.Name}">
+     <apex:pageBlock mode="edit">
         <apex:pageBlockButtons > 
             <apex:commandButton action="{!save}" value="Save" />
             <apex:commandButton value="Cancel" 
@@ -27,6 +30,7 @@ This is a solution to the problem described in Salesforce Idea [Changing Account
          </apex:pageBlockSection>
      </apex:pageBlock>
      </apex:form>
+         
 </apex:page>
 ```
 
