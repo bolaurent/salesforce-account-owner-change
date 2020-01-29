@@ -30,7 +30,7 @@ This is a solution to the problem described in Salesforce Idea [Changing Account
 </apex:page>
 ```
 
-2. Create a new formula field on Account. Name it Account Owner, make it of type Text, and give it the following formula:
+2. Create a new formula field on Account. Name it Account Owner, make it of type Text, and give it the following formula. Make it visible to all profiles.
 
 ```
 HYPERLINK("/apex/AccountChangeOwner?id=" + Id, 
@@ -38,3 +38,6 @@ Owner.FirstName  & " " &  Owner.LastName + " [Change]",
 '_self')
 ```
 
+3. Edit your Account page layout(s). Replace the standard Account Owner field with the custom Account Owner field you just defined.
+
+4. Now, when a user clicks "Change" next to "Account Owner", the Visualforce page opens in the same window, and the user can specify a new owner and save. No child records will have their owners changed.
