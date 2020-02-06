@@ -15,10 +15,15 @@ This is a solution to the problem described in Salesforce Idea [Changing Account
         <apex:pageMessages />
      </apex:outputPanel>
      
-     <apex:form>
+     <apex:form >
      <apex:pageBlock mode="edit">
         <apex:pageBlockButtons > 
-            <apex:commandButton action="{!save}" value="Save" />
+            <apex:commandButton action="{!save}" value="Save" 
+                title="Do not transfer child records along with Account"/>
+            <apex:commandButton value="Classic Change Owner" 
+                action="{!URLFOR($Action.Account.ChangeOwner,Account.Id, [retURL=URLFOR($Action.Account.View, Account.Id)])}"
+                immediate="true"
+                title="Transfer child records along with Account"/>
             <apex:commandButton value="Cancel" 
                 action="{!URLFOR($Action.Account.View, Account.Id)}"
                 immediate="true"
